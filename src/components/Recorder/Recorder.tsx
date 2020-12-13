@@ -20,7 +20,7 @@ const Recorder = () => {
   // variable to store the 1 second interval for timer rerender
   let interval = useRef<number>();
 
-  // useStae usage for updating count of rerenders
+  // useState usage for updating count of rerenders
   const [, setCount] = useState<number>(0);
 
   const handleClick = () => {
@@ -43,7 +43,6 @@ const Recorder = () => {
   }, []);
 
   // calculations for displaying seconds, minutes, hours
-
   let seconds = started
     ? Math.floor((Date.now() - new Date(dateStart).getTime()) / 1000)
     : 0;
@@ -52,6 +51,7 @@ const Recorder = () => {
   const minutes = seconds ? Math.floor(seconds / 60) : 0;
   seconds -= minutes * 60;
 
+  // rendered component
   return (
     <div className={cx('recorder', { 'recorder-started': started })}>
       <button onClick={handleClick} className="recorder-record">
