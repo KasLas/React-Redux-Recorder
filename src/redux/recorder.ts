@@ -39,7 +39,7 @@ const recorderReducer = (
 ) => {
   switch (action.type) {
     case START:
-      // when start action is invoked then is the states property dateStart overwritten
+      // when start action is invoked then  the states property dateStart is overwritten
       return { ...state, dateStart: new Date().toISOString() };
 
     case STOP:
