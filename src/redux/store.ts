@@ -1,6 +1,7 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import recorderReducer from './recorder';
 import userEventsReducer from './user-events';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   userEvents: userEventsReducer,
@@ -9,11 +10,6 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-const store = createStore(
-  rootReducer,
-  // adding store to chrome redux extension
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
